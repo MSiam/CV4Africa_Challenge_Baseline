@@ -37,8 +37,8 @@ def batch_intersectionAndUnion(logits: torch.Tensor,
                                   ignore_index=255):
     """
     inputs:
-        logits : shape [n_task, shot, num_class, h, w]
-        target : shape [n_task, shot, H, W]
+        logits : shape [batch, num_class, h, w] or [h, w] in this case its direct predictions
+        target : shape [batch, H, W] or [h, w]
         num_classes : Number of classes
 
     returns :
@@ -48,12 +48,18 @@ def batch_intersectionAndUnion(logits: torch.Tensor,
     """
     num_classes = 4
 
-    preds = torch.tensor(logits).unsqueeze(0)
-    target = torch.tensor(target).unsqueeze(0)
+    if logits.ndim < 3:
+        # No Batch dimension
+        preds = torch.tensor(logits).unsqueeze(0)
+        target = torch.tensor(target).unsqueeze(0)
+        n_tasks, h, w = preds.size()
+        preds = preds.view(1, *preds.shape)
+    elif logits.ndim == 4:
+        preds = logits.argmax(dim=1)
+        n_tasks, h, w = preds.size()
+        preds = preds.unsqueeze(1)
 
-    n_tasks, h, w = preds.size()
-    preds = preds.view(1, *preds.shape)
-
+    # preds: Batch x Channel (1) x H x W
     H, W = target.size()[-2:]
     preds = F.interpolate(preds.float(), size=(H, W), mode='nearest')
 

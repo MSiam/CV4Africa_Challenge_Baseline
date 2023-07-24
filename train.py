@@ -66,10 +66,6 @@ def validate(model, val_loader, device):
         eps = 1e-10
         batch_iou = intersection / (union + eps)
 
-#        for cls in range(sum_inter.shape[0]):
-#            if sum_inter[cls] == 0 and sum_union[cls] == 0:
-#                batch_iou[:, cls] = np.nan
-
         if all_ious is None:
             all_intersection = intersection.sum(axis=0)
             all_union = union.sum(axis=0)

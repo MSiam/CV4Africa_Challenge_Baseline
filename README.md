@@ -1,5 +1,7 @@
 # Baseline Semantic Segmentation for CV4Africa Challenge
+
 [CV4Africa Workshop](https://ro-ya-cv4africa.github.io/homepage/event_workshop.html)
+
 [Challenge on the Legacy of Spatial Apartheid in South Africa](https://codalab.lisn.upsaclay.fr/competitions/14259)
 
 ## Setup

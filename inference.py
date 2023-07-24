@@ -1,3 +1,9 @@
+"""
+Ro'ya CV4Africa Challenge Baseline
+workshop website: https://ro-ya-cv4africa.github.io/homepage/event_workshop.html
+challenge website: https://codalab.lisn.upsaclay.fr/competitions/14259
+"""
+
 import torch
 import torchvision
 import argparse
@@ -13,7 +19,6 @@ import pathlib
 import os
 import numpy as np
 from metric_utils import batch_intersectionAndUnion
-from dlab_model import DLab
 import torch.backends.cudnn as cudnn
 import random
 from unet import UNet
@@ -27,7 +32,7 @@ def parse_args():
     parser.add_argument('--data_root', default='data_renamed/', type=str)
     parser.add_argument('--workers', default=4, type=int)
     parser.add_argument('--model_dir', type=str, default='/local/riemann1/home/msiam/spatial_apertheid_challenge/')
-    parser.add_argument('--model_type', type=str, default='dlabv3')
+    parser.add_argument('--model_type', type=str, default='unet')
     parser.add_argument('--out_dir', type=str, default='outputs/')
     return parser.parse_args()
 
@@ -108,9 +113,7 @@ def infer(args):
 
     # Create model
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    if args.model_type == 'dlabv3':
-        model = DLab(num_classes=4)
-    elif args.model_type == 'unet':
+    if args.model_type == 'unet':
         model = UNet(n_classes=4)
 
     model.to(device)

@@ -1,3 +1,10 @@
+"""
+Ro'ya CV4Africa Challenge Baseline
+workshop website: https://ro-ya-cv4africa.github.io/homepage/event_workshop.html
+challenge website: https://codalab.lisn.upsaclay.fr/competitions/14259
+"""
+
+
 import pathlib
 from typing import Optional, Dict, List
 import wandb

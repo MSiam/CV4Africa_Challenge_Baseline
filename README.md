@@ -17,6 +17,15 @@ python train.py --model_type unet --experiment unet_testing --data_root DATA_ROO
 * Download the trained weights, that can be used to reproduce the sample submission in the starter kit, [here](https://www.dropbox.com/scl/fi/m8a4jnkhao6hy0fl9ee8n/unet_fixed.zip?rlkey=je4j3jshgcthrr8ohgif3jpsw&dl=0)
 * Run the following command
 ```
-
+python inference.py --model_dir unet_fixed/ --model_type unet --out_dir OUTDIR
 ```
-* The output results will be saved in 
+* The output results will be saved under OUTDIR/
+
+## Licence
+The code is licensed under the [Apache-2.0 License](https://github.com/fundamentalvision/Deformable-DETR/blob/main/LICENSE).
+
+## Acknowledgements
+Parts of the code have been re-used from the following repositories:
+* [MEDVT](https://github.com/rkyuca/medvt) 
+* [UNET](https://github.com/milesial/Pytorch-UNet) 
+* [RePRI](https://github.com/mboudiaf/RePRI-for-Few-Shot-Segmentation) 

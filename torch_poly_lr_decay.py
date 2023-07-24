@@ -1,3 +1,9 @@
+"""
+Ro'ya CV4Africa Challenge Baseline
+workshop website: https://ro-ya-cv4africa.github.io/homepage/event_workshop.html
+challenge website: https://codalab.lisn.upsaclay.fr/competitions/14259
+"""
+
 import torch
 from torch.optim.lr_scheduler import _LRScheduler
 import logging
@@ -7,8 +13,8 @@ logger.setLevel(logging.DEBUG)
 
 """
 Collected from https://github.com/cmpark0126/pytorch-polynomial-lr-decay
-and customized as needed. 
-And the original license from them are below as is: 
+and customized as needed.
+And the original license from them are below as is:
 '
 MIT License
 
@@ -91,7 +97,7 @@ class PolynomialLRDecayWithOsc(_LRScheduler):
 
 class PolynomialLRDecayV2(_LRScheduler):
     """Polynomial learning rate decay until step reach to max_decay_step
-    
+
     Args:
         optimizer (Optimizer): Wrapped optimizer.
         max_decay_steps: after this step, we stop decreasing learning rate
